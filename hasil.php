@@ -17,12 +17,19 @@ $i = 1;
 
     <title>Sistem Beasiswa</title>
 
+    <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Chart -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Css -->
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
+    <!-- TopBar -->
     <section class="bg-dark">
         <div class="row">
             <div class="col-md-4">
@@ -44,11 +51,19 @@ $i = 1;
     </section>
 
     <h3 class="text-center mt-3"> Hasil Pendataan Beasiswa </h3>
+    <!-- Table Data -->
     <section>
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <h5>Data Terkini</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>Data Terkini</h5>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end"><a href="grafik.php" class="btn btn-primary">Lihat Grafik</a></p>
+                        </div>
+                    </div>
                     <?php if ($_GET['status'] == 'deletesuccess') : ?>
                         <div class="alert alert-success" role="alert">
                             Data Berhasil dihapus
@@ -84,7 +99,7 @@ $i = 1;
                                         <td><?= $mahasiswa['no_hp'] ?></td>
                                         <td><?= $mahasiswa['ipk'] ?></td>
                                         <td><?= $mahasiswa['beasiswa'] ?></td>
-                                        <td><?= $mahasiswa['status_ajuan'] == 'belum' ? 'Belum Terverifikasi' : 'Terverifikasi' ?></td>
+                                        <td><?= $mahasiswa['status_ajuan'] == 'belum' ? 'Belum Diverifikasi' : 'Terverifikasi' ?></td>
                                         <td>
                                             <a href="edit.php?edit=<?= $mahasiswa['id'] ?>" class="btn btn-primary btn-sm text-white">Edit Status Ajuan</a>
                                             <a href="delete.php?destroy=<?= $mahasiswa['id'] ?>" class="btn btn-danger btn-sm text-white"><i class="fa-solid fa-trash"></i></a>
@@ -107,15 +122,6 @@ $i = 1;
 
     <!--Option 1: Bootstrap Bundle with Popper-->
     <script script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script>
-        $(document).ready(function() {
-            var ipk = $("#ipk").val();
-            console.log(ipk);
-            if (ipk >= 3) {
-                $("#beasiswa, #berkas, #submit").removeAttr("disabled");
-            }
-        });
     </script>
 </body>
 
