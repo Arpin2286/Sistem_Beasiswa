@@ -83,7 +83,7 @@ const ipk = 3;
                                     <label for="no_hp"> nomor hp </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="no_hp" id="no_hp" required>
+                                    <input type="number" class="form-control" name="no_hp" id="no_hp" required>
                                 </div>
                             </div>
                             <div class="row mb-4">
