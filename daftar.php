@@ -153,9 +153,10 @@ const ipk = 3;
     </script>
     <script>
         $(document).ready(function() {
+            // Get Value Input IPK
             var ipk = $("#ipk").val();
-            console.log(ipk);
             if (ipk >= 3) {
+                // Jika True Maka hapus disabled
                 $("#beasiswa, #berkas, #submit").removeAttr("disabled");
             }
         });

@@ -1,5 +1,31 @@
 <?php
 include 'config.php';
+
+// Hitung Jumlah Data penerima beasiswa akademik
+$queryAkademik = "SELECT COUNT(*) FROM `mahasiswa` WHERE beasiswa = 'akademik'";
+$sqlAkademik = mysqli_query($db, $queryAkademik);
+$akademik = mysqli_fetch_assoc($sqlAkademik);
+$jmlAkademik = $akademik['COUNT(*)'];
+
+// Hitung jumlah data penerima beasiswa non akademik
+$queryNonakademik = "SELECT COUNT(*) FROM `mahasiswa` WHERE beasiswa = 'non-akademik'";
+$sqlNonakademik = mysqli_query($db, $queryNonakademik);
+$nonakademik = mysqli_fetch_assoc($sqlNonakademik);
+$jmlNonakademik = $nonakademik['COUNT(*)'];
+
+// Hitung jumlah data penerima beasiswa bidikmisi
+$queryBidikmisi = "SELECT COUNT(*) FROM `mahasiswa` WHERE beasiswa = 'bidikmisi'";
+$sqlBidikmisi = mysqli_query($db, $queryBidikmisi);
+$bidikmisi = mysqli_fetch_assoc($sqlBidikmisi);
+$jmlBidikmisi = $bidikmisi['COUNT(*)'];
+
+$total = totalData($jmlAkademik, $jmlNonakademik, $jmlBidikmisi);
+
+function totalData($akademik, $nonakademik, $bidikmisi)
+{
+    $total = $akademik + $nonakademik + $bidikmisi;
+    return $total;
+}
 ?>
 
 <!doctype html>
@@ -49,11 +75,13 @@ include 'config.php';
     </section>
 
     <h3 class="text-center mt-3"> Grafik Pendataan Beasiswa </h3>
+    <p class="text-center">Total Data <?= $total; ?></p>
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-12">
                 <a href="hasil.php" class="btn btn-secondary d-block">Kembali</a>
+                <!-- Tampil Chart -->
                 <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
             </div>
         </div>
@@ -69,9 +97,9 @@ include 'config.php';
             // Set Data
             const data = google.visualization.arrayToDataTable([
                 ['Beasiswa', 'Jumlah'],
-                ['Akademik', 55],
-                ['Non Akademik', 49],
-                ['Bidikmisi', 44],
+                ['Akademik', <?= $jmlAkademik ?>],
+                ['Non Akademik', <?= $jmlNonakademik ?>],
+                ['Bidikmisi', <?= $jmlBidikmisi ?>],
             ]);
 
             // Set Options

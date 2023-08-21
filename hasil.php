@@ -90,6 +90,7 @@ $i = 1;
                             <?php $query = "SELECT * FROM mahasiswa";
                             $sql = mysqli_query($db, $query); ?>
                             <?php if ($sql) : ?>
+                                <!-- Loop -->
                                 <?php while ($mahasiswa = mysqli_fetch_array($sql)) : ?>
                                     <tr>
                                         <td><?= $i;

@@ -1,9 +1,10 @@
 <?php
 include 'config.php';
-
+// Lakukan jika ada input get Edit
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
 
+    // Ambil data di mana id sama dengan $id
     $query = "SELECT * FROM `mahasiswa` WHERE id = '$id'";
     $sql = mysqli_query($db, $query);
     $mahasiswa = mysqli_fetch_assoc($sql);
