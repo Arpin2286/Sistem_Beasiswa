@@ -46,6 +46,7 @@ function UploadFile($berkas, $tmp_name)
     if (in_array($ekstensi, $ekstensiDiperbolehkan) === true) {
         $cek = move_uploaded_file($tmp_name, 'upload/' . $berkas);
     } else {
-        die('File yang anda upload bukan jpg, zip, atau pdf.');
+        header('Location: daftar.php?status=gagal');
+        exit;
     }
 }

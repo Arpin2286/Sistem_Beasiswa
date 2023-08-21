@@ -51,9 +51,9 @@ const ipk = 3;
                     <div class="alert alert-success" role="alert">
                         Berhasil Menambahkan data
                     </div>
-                <?php elseif ($_GET['status']) : ?>
+                <?php elseif ($_GET['status'] == 'gagal') : ?>
                     <div class="alert alert-danger" role="alert">
-                        Gagal Menambahkan data
+                        File harus dalam format jpg, pdf, atau zip.
                     </div>
                 <?php endif; ?>
                 <div class="card">
